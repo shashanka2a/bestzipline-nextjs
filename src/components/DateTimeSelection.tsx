@@ -95,13 +95,19 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
   const handleNext = () => {
     if (canProceed) {
       onNext(selectedDate, selectedTimeSlot);
+    } else {
+      // Show a helpful message or scroll to the calendar
+      const calendarElement = document.querySelector('[data-calendar-section]');
+      if (calendarElement) {
+        calendarElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
   };
 
   return (
     <div className="space-y-8 animate-fade-in">
       {/* Calendar */}
-      <div className="animate-slide-up">
+      <div className="animate-slide-up" data-calendar-section>
         <h3 className="text-lg font-semibold mb-6 text-gray-900">Select a Date</h3>
         
         {/* Custom Calendar */}
@@ -219,17 +225,22 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
       <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
         <Button
           onClick={handleNext}
-          disabled={!canProceed}
           className={`
             w-full py-4 text-lg font-semibold rounded-xl transition-all duration-200 touch-target
             ${canProceed 
               ? 'bg-adventure-green hover:bg-adventure-green-dark text-white shadow-lg hover:shadow-xl transform hover:scale-105' 
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'bg-adventure-green/20 border-2 border-adventure-green/30 text-adventure-green hover:bg-adventure-green/30 hover:shadow-md transform hover:scale-105'
             }
           `}
         >
           {canProceed ? 'CONTINUE TO DETAILS' : 'SELECT DATE & TIME TO CONTINUE'}
         </Button>
+        
+        {!canProceed && (
+          <p className="text-center text-sm text-gray-600 mt-3 animate-fade-in">
+            💡 Click the button above to scroll to the calendar and select your date & time
+          </p>
+        )}
       </div>
     </div>
   );

@@ -79,6 +79,25 @@ export function BookingFlow({ onBack, onBookingComplete }: BookingFlowProps) {
     }
   };
 
+  const handleStepClick = (step: 'datetime' | 'details' | 'checkout') => {
+    // Allow navigation to previous steps only
+    switch (step) {
+      case 'datetime':
+        if (currentStep === 'details' || currentStep === 'checkout') {
+          setCurrentStep('datetime');
+        }
+        break;
+      case 'details':
+        if (currentStep === 'checkout') {
+          setCurrentStep('details');
+        }
+        break;
+      case 'checkout':
+        // Can't jump to checkout without completing previous steps
+        break;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}

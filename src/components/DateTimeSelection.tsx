@@ -232,6 +232,11 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
               : 'bg-adventure-green/20 border-2 border-adventure-green/30 text-adventure-green hover:bg-adventure-green/30 hover:shadow-md transform hover:scale-105'
             }
           `}
+          style={{
+            color: canProceed ? 'white' : 'var(--adventure-green)',
+            backgroundColor: canProceed ? 'var(--adventure-green)' : 'rgba(107, 155, 58, 0.2)',
+            borderColor: canProceed ? 'var(--adventure-green)' : 'rgba(107, 155, 58, 0.3)'
+          }}
         >
           {canProceed ? 'CONTINUE TO DETAILS' : 'SELECT DATE & TIME TO CONTINUE'}
         </Button>

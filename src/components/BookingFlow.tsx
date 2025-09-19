@@ -122,10 +122,22 @@ export function BookingFlow({ onBack, onBookingComplete }: BookingFlowProps) {
         <div className="max-w-md md:max-w-4xl mx-auto px-4 py-6 animate-slide-up">
           <div className="flex items-center justify-between mb-8">
             {/* Step 1 */}
-            <div className="flex items-center">
+            <button 
+              onClick={() => handleStepClick('datetime')}
+              className={`flex items-center transition-all duration-200 ${
+                (currentStep === 'details' || currentStep === 'checkout') 
+                  ? 'hover:scale-105 cursor-pointer' 
+                  : 'cursor-default'
+              }`}
+              disabled={currentStep === 'datetime'}
+            >
               <div 
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-200 ${
                   currentStep !== 'datetime' ? 'text-white' : 'text-gray-700'
+                } ${
+                  (currentStep === 'details' || currentStep === 'checkout') 
+                    ? 'hover:shadow-lg' 
+                    : ''
                 }`}
                 style={{
                   backgroundColor: currentStep !== 'datetime' ? 'var(--adventure-green)' : '#f3f4f6'
@@ -133,16 +145,34 @@ export function BookingFlow({ onBack, onBookingComplete }: BookingFlowProps) {
               >
                 {currentStep !== 'datetime' ? <Check className="h-4 w-4" /> : '1'}
               </div>
-              <span className="ml-2 text-sm text-gray-600">Date & Time</span>
-            </div>
+              <span className={`ml-2 text-sm transition-colors duration-200 ${
+                (currentStep === 'details' || currentStep === 'checkout') 
+                  ? 'text-gray-600 hover:text-adventure-green' 
+                  : 'text-gray-600'
+              }`}>
+                Date & Time
+              </span>
+            </button>
             
             <div className="flex-1 h-px bg-gray-200 mx-4" />
             
             {/* Step 2 */}
-            <div className="flex items-center">
+            <button 
+              onClick={() => handleStepClick('details')}
+              className={`flex items-center transition-all duration-200 ${
+                currentStep === 'checkout' 
+                  ? 'hover:scale-105 cursor-pointer' 
+                  : 'cursor-default'
+              }`}
+              disabled={currentStep === 'details' || currentStep === 'datetime'}
+            >
               <div 
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-200 ${
                   currentStep !== 'datetime' ? 'text-white' : 'text-gray-700'
+                } ${
+                  currentStep === 'checkout' 
+                    ? 'hover:shadow-lg' 
+                    : ''
                 }`}
                 style={{
                   backgroundColor: currentStep !== 'datetime' ? 'var(--adventure-green)' : '#f3f4f6'
@@ -150,15 +180,25 @@ export function BookingFlow({ onBack, onBookingComplete }: BookingFlowProps) {
               >
                 {currentStep !== 'datetime' ? <Check className="h-4 w-4" /> : '2'}
               </div>
-              <span className="ml-2 text-sm text-gray-600">Details</span>
-            </div>
+              <span className={`ml-2 text-sm transition-colors duration-200 ${
+                currentStep === 'checkout' 
+                  ? 'text-gray-600 hover:text-adventure-green' 
+                  : 'text-gray-600'
+              }`}>
+                Details
+              </span>
+            </button>
             
             <div className="flex-1 h-px bg-gray-200 mx-4" />
             
             {/* Step 3 */}
-            <div className="flex items-center">
+            <button 
+              onClick={() => handleStepClick('checkout')}
+              className="flex items-center transition-all duration-200 cursor-default"
+              disabled={true}
+            >
               <div 
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-200 ${
                   currentStep === 'checkout' ? 'text-white' : 'text-gray-700'
                 }`}
                 style={{
@@ -168,8 +208,15 @@ export function BookingFlow({ onBack, onBookingComplete }: BookingFlowProps) {
                 3
               </div>
               <span className="ml-2 text-sm text-gray-600">Payment</span>
-            </div>
+            </button>
           </div>
+          
+          {/* Helpful hint for clickable steps */}
+          {(currentStep === 'details' || currentStep === 'checkout') && (
+            <p className="text-center text-xs text-gray-500 mt-2 animate-fade-in">
+              💡 Click on completed steps above to go back and edit
+            </p>
+          )}
         </div>
       )}
 

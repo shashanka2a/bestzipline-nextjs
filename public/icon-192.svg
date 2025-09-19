@@ -1,4 +1,32 @@
 <svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="192" height="192" rx="24" fill="#6B9B3A"/>
-<text x="96" y="110" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">FL</text>
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B9B3A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5A8332;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="24" fill="url(#bgGradient)"/>
+  
+  <!-- Zipline cable -->
+  <line x1="24" y1="48" x2="168" y2="144" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Zipline pulley/harness -->
+  <circle cx="96" cy="96" r="18" fill="white"/>
+  <circle cx="96" cy="96" r="9" fill="#6B9B3A"/>
+  
+  <!-- Person figure -->
+  <circle cx="96" cy="72" r="12" fill="white"/>
+  <rect x="90" y="84" width="12" height="24" fill="white"/>
+  <line x1="84" y1="96" x2="72" y2="108" stroke="white" stroke-width="9" stroke-linecap="round"/>
+  <line x1="108" y1="96" x2="120" y2="108" stroke="white" stroke-width="9" stroke-linecap="round"/>
+  
+  <!-- Trees/forest background -->
+  <path d="M12 168 L24 120 L36 168 Z" fill="white" opacity="0.3"/>
+  <path d="M156 168 L168 120 L180 168 Z" fill="white" opacity="0.3"/>
+  <path d="M48 180 L54 150 L60 180 Z" fill="white" opacity="0.2"/>
+  <path d="M132 180 L138 150 L144 180 Z" fill="white" opacity="0.2"/>
+  
+  <!-- Adventure text -->
+  <text x="96" y="180" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" opacity="0.8">ZIPLINE</text>
 </svg>

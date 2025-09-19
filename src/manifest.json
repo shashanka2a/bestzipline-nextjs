@@ -1,6 +1,6 @@
 {
-  "name": "Florida's Longest Zipline",
-  "short_name": "FL Zipline",
+  "name": "Florida's Longest Zipline Adventure",
+  "short_name": "Zipline",
   "description": "Experience the thrill of Florida's longest zipline adventure",
   "start_url": "/",
   "display": "standalone",

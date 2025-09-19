@@ -88,6 +88,13 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
                 textDecoration: 'line-through'
               },
             }}
+            classNames={{
+              head_cell: "text-gray-500 text-xs font-medium w-8 h-8 flex items-center justify-center",
+              head_row: "flex w-full justify-between mb-2",
+              table: "w-full",
+              row: "flex w-full justify-between",
+              cell: "w-8 h-8 flex items-center justify-center",
+            }}
           />
         </div>
         <p className="text-sm text-gray-500 mt-2">

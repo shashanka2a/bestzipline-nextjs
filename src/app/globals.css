@@ -491,3 +491,39 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Calendar UI fixes */
+.rdp-head_cell {
+  width: 2rem !important;
+  text-align: center !important;
+  padding: 0.25rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: #6b7280 !important;
+}
+
+.rdp-head_row {
+  display: flex !important;
+  width: 100% !important;
+  justify-content: space-between !important;
+}
+
+.rdp-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.rdp-row {
+  display: flex !important;
+  width: 100% !important;
+  margin-top: 0.5rem !important;
+}
+
+.rdp-cell {
+  width: 2rem !important;
+  height: 2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+}

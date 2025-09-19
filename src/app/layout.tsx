@@ -18,13 +18,19 @@ export const metadata: Metadata = {
   title: "Florida's Longest Zipline - Adventure Awaits",
   description: "Experience the thrill of Florida's longest zipline adventure. Book your canopy tour today!",
   manifest: "/manifest.json",
-  themeColor: "#6B9B3A",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "FL Zipline",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#6B9B3A",
 };
 
 export default function RootLayout({

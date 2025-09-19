@@ -228,14 +228,14 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
           className={`
             continue-button w-full py-4 text-lg font-semibold rounded-xl transition-all duration-200 touch-target
             ${canProceed 
-              ? 'can-proceed bg-adventure-green hover:bg-adventure-green-dark shadow-lg hover:shadow-xl transform hover:scale-105' 
+              ? 'can-proceed bg-white border-2 border-adventure-green hover:bg-adventure-green/10 shadow-lg hover:shadow-xl transform hover:scale-105' 
               : 'bg-adventure-green/20 border-2 border-adventure-green/30 hover:bg-adventure-green/30 hover:shadow-md transform hover:scale-105'
             }
           `}
           style={{
-            backgroundColor: canProceed ? 'var(--adventure-green) !important' : 'rgba(107, 155, 58, 0.2) !important',
+            backgroundColor: canProceed ? 'white !important' : 'rgba(107, 155, 58, 0.2) !important',
             borderColor: canProceed ? 'var(--adventure-green) !important' : 'rgba(107, 155, 58, 0.3) !important',
-            border: canProceed ? 'none' : '2px solid rgba(107, 155, 58, 0.3)'
+            border: canProceed ? '2px solid var(--adventure-green) !important' : '2px solid rgba(107, 155, 58, 0.3)'
           }}
         >
           {canProceed ? 'CONTINUE TO DETAILS' : 'SELECT DATE & TIME TO CONTINUE'}

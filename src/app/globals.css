@@ -547,7 +547,8 @@ html {
 
 /* Button text visibility fixes */
 .continue-button {
-  color: white !important;
+  color: var(--adventure-green) !important;
+  font-weight: 600 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -557,6 +558,6 @@ html {
 }
 
 .continue-button.can-proceed {
-  color: white !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: var(--adventure-green) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }

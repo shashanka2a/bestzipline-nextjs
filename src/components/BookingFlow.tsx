@@ -82,25 +82,25 @@ export function BookingFlow({ onBack, onBookingComplete }: BookingFlowProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-4 py-4">
-        <div className="max-w-md mx-auto flex items-center">
+      <div className="bg-white/95 backdrop-blur-sm border-b border-gray-200 px-4 py-4 md:px-6">
+        <div className="max-w-md md:max-w-4xl mx-auto flex items-center">
           {currentStep !== 'confirmation' && (
             <Button
               variant="ghost"
               size="sm"
               onClick={handleBackNavigation}
-              className="mr-3"
+              className="mr-3 touch-target hover-scale transition-fast"
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
           )}
-          <h2 className="text-lg font-semibold flex-1">{getStepTitle()}</h2>
+          <h2 className="text-lg md:text-xl font-semibold flex-1 animate-slide-in-right">{getStepTitle()}</h2>
         </div>
       </div>
 
       {/* Progress Indicator */}
       {currentStep !== 'confirmation' && (
-        <div className="max-w-md mx-auto px-4 py-6">
+        <div className="max-w-md md:max-w-4xl mx-auto px-4 py-6 animate-slide-up">
           <div className="flex items-center justify-between mb-8">
             {/* Step 1 */}
             <div className="flex items-center">
@@ -155,7 +155,7 @@ export function BookingFlow({ onBack, onBookingComplete }: BookingFlowProps) {
       )}
 
       {/* Step Content */}
-      <div className="max-w-md mx-auto px-4 pb-6">
+      <div className="max-w-md md:max-w-4xl mx-auto px-4 pb-6">
         {currentStep === 'datetime' && (
           <DateTimeSelection onNext={handleDateTimeNext} />
         )}

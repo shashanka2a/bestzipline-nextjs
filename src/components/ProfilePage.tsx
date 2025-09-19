@@ -75,7 +75,7 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
   };
 
   const BookingCard = ({ booking }: { booking: Booking }) => (
-    <Card className="p-4 mb-4">
+    <Card className="p-4 mb-4 hover-lift transition-smooth animate-slide-up">
       <div className="flex justify-between items-start mb-3">
         <div>
           <h3 className="font-semibold">Florida&apos;s Longest Zipline</h3>
@@ -128,7 +128,7 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
               size="sm"
               variant="outline"
               onClick={() => handleReschedule(booking.id)}
-              className="flex items-center"
+              className="flex items-center hover-scale transition-fast touch-target"
             >
               <Edit3 className="mr-1 h-3 w-3" />
               Reschedule
@@ -137,7 +137,7 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
               size="sm"
               variant="outline"
               onClick={() => handleCancel(booking.id)}
-              className="flex items-center text-red-600 hover:text-red-700"
+              className="flex items-center text-red-600 hover:text-red-700 hover-scale transition-fast touch-target"
             >
               <X className="mr-1 h-3 w-3" />
               Cancel
@@ -150,6 +150,7 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
             size="sm"
             variant="outline"
             onClick={() => alert('Booking again functionality would open here')}
+            className="hover-scale transition-fast touch-target"
           >
             Book Again
           </Button>
@@ -161,47 +162,47 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-4 py-4">
-        <div className="max-w-md mx-auto flex items-center">
+      <div className="bg-white/95 backdrop-blur-sm border-b border-gray-200 px-4 py-4 md:px-6">
+        <div className="max-w-md md:max-w-4xl mx-auto flex items-center">
           <Button
             variant="ghost"
             size="sm"
             onClick={onBack}
-            className="mr-3"
+            className="mr-3 hover-scale transition-fast touch-target"
           >
             <ChevronRight className="h-5 w-5 rotate-180" />
           </Button>
-          <h2 className="text-lg font-semibold flex-1">My Profile</h2>
+          <h2 className="text-lg md:text-xl font-semibold flex-1 animate-slide-in-right">My Profile</h2>
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 py-6">
+      <div className="max-w-md md:max-w-4xl mx-auto px-4 py-6">
         {/* Profile Section */}
-        <Card className="p-6 mb-6">
+        <Card className="p-6 mb-6 hover-lift transition-smooth animate-slide-up">
           <div className="flex items-center mb-4">
             <div 
-              className="w-16 h-16 rounded-full flex items-center justify-center mr-4"
+              className="w-16 h-16 rounded-full flex items-center justify-center mr-4 animate-scale-in"
               style={{ backgroundColor: 'var(--adventure-green)' }}
             >
               <User className="w-8 h-8 text-white" />
             </div>
-            <div>
+            <div className="animate-slide-in-right" style={{ animationDelay: '0.1s' }}>
               <h3 className="font-semibold">John Adventure</h3>
               <p className="text-sm text-gray-600">john@example.com</p>
               <p className="text-sm text-gray-600">(555) 123-4567</p>
             </div>
           </div>
           
-          <div className="grid grid-cols-3 gap-4 text-center pt-4 border-t">
-            <div>
+          <div className="grid grid-cols-3 gap-4 text-center pt-4 border-t animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="animate-bounce-subtle" style={{ animationDelay: '0.3s' }}>
               <p className="font-semibold">{bookings.length}</p>
               <p className="text-xs text-gray-600">Total Bookings</p>
             </div>
-            <div>
+            <div className="animate-bounce-subtle" style={{ animationDelay: '0.4s' }}>
               <p className="font-semibold">{upcomingBookings.length}</p>
               <p className="text-xs text-gray-600">Upcoming</p>
             </div>
-            <div>
+            <div className="animate-bounce-subtle" style={{ animationDelay: '0.5s' }}>
               <p className="font-semibold">{pastBookings.filter(b => b.status === 'completed').length}</p>
               <p className="text-xs text-gray-600">Completed</p>
             </div>
@@ -209,12 +210,12 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
         </Card>
 
         {/* Bookings Section */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full animate-slide-up" style={{ animationDelay: '0.3s' }}>
           <TabsList className="grid w-full grid-cols-2 mb-6">
-            <TabsTrigger value="upcoming">
+            <TabsTrigger value="upcoming" className="transition-smooth">
               Upcoming ({upcomingBookings.length})
             </TabsTrigger>
-            <TabsTrigger value="past">
+            <TabsTrigger value="past" className="transition-smooth">
               Past ({pastBookings.length})
             </TabsTrigger>
           </TabsList>
@@ -225,12 +226,13 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
                 <BookingCard key={booking.id} booking={booking} />
               ))
             ) : (
-              <Card className="p-8 text-center">
-                <Calendar className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+              <Card className="p-8 text-center animate-fade-in hover-lift transition-smooth">
+                <Calendar className="mx-auto h-12 w-12 text-gray-400 mb-4 animate-float" />
                 <h3 className="font-medium text-gray-900 mb-2">No upcoming bookings</h3>
                 <p className="text-gray-600 mb-4">Ready for your next adventure?</p>
                 <Button
                   onClick={onBack}
+                  className="hover-scale transition-smooth touch-target"
                   style={{
                     backgroundColor: 'var(--adventure-green)',
                     color: 'white',
@@ -248,8 +250,8 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
                 <BookingCard key={booking.id} booking={booking} />
               ))
             ) : (
-              <Card className="p-8 text-center">
-                <Clock className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+              <Card className="p-8 text-center animate-fade-in hover-lift transition-smooth">
+                <Clock className="mx-auto h-12 w-12 text-gray-400 mb-4 animate-float" />
                 <h3 className="font-medium text-gray-900 mb-2">No past bookings</h3>
                 <p className="text-gray-600">Your adventure history will appear here</p>
               </Card>

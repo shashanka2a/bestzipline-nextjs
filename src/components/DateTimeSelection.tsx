@@ -67,11 +67,11 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in">
       {/* Calendar */}
-      <div>
+      <div className="animate-slide-up">
         <h3 className="font-medium mb-4">Select a Date</h3>
-        <div className="border rounded-lg p-4 bg-white">
+        <div className="border rounded-lg p-4 bg-white hover-lift transition-smooth">
           <Calendar
             mode="single"
             selected={selectedDate}
@@ -98,21 +98,22 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
 
       {/* Time Slots */}
       {selectedDate && !isDateBlocked(selectedDate) && (
-        <div>
+        <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <h3 className="font-medium mb-4">Select a Time</h3>
           <div className="grid grid-cols-2 gap-3">
-            {timeSlots.map((slot) => (
+            {timeSlots.map((slot, index) => (
               <button
                 key={slot}
                 onClick={() => setSelectedTimeSlot(slot)}
-                className={`p-3 rounded-lg border text-sm font-medium transition-all ${
+                className={`p-3 rounded-lg border text-sm font-medium transition-smooth hover-scale touch-target ${
                   selectedTimeSlot === slot
-                    ? 'text-white border-2'
+                    ? 'text-white border-2 animate-scale-in'
                     : 'text-gray-700 border-gray-200 hover:border-gray-300'
                 }`}
                 style={{
                   backgroundColor: selectedTimeSlot === slot ? 'var(--adventure-green)' : 'white',
                   borderColor: selectedTimeSlot === slot ? 'var(--adventure-green)' : undefined,
+                  animationDelay: `${index * 0.1}s`
                 }}
               >
                 {slot}
@@ -126,10 +127,11 @@ export function DateTimeSelection({ onNext }: DateTimeSelectionProps) {
       <Button
         onClick={handleNext}
         disabled={!canProceed}
-        className="w-full py-3 font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-3 font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover-scale transition-smooth touch-target animate-slide-up"
         style={{
           backgroundColor: canProceed ? 'var(--adventure-green)' : '#9ca3af',
           color: 'white',
+          animationDelay: '0.4s'
         }}
       >
         CONTINUE TO DETAILS

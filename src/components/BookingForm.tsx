@@ -71,12 +71,12 @@ export function BookingForm({ onSubmit, initialData }: BookingFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
+    <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
+      <div className="animate-slide-up">
         <h3 className="font-medium mb-4">Contact Information</h3>
         
         {/* Name */}
-        <div className="space-y-2 mb-4">
+        <div className="space-y-2 mb-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
           <Label htmlFor="name">Full Name</Label>
           <Input
             id="name"
@@ -84,15 +84,15 @@ export function BookingForm({ onSubmit, initialData }: BookingFormProps) {
             placeholder="Enter your full name"
             value={formData.name}
             onChange={(e) => updateField('name', e.target.value)}
-            className={errors.name ? 'border-red-500' : ''}
+            className={`transition-fast ${errors.name ? 'border-red-500' : ''}`}
           />
           {errors.name && (
-            <p className="text-sm text-red-600">{errors.name}</p>
+            <p className="text-sm text-red-600 animate-slide-up">{errors.name}</p>
           )}
         </div>
 
         {/* Email */}
-        <div className="space-y-2 mb-4">
+        <div className="space-y-2 mb-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <Label htmlFor="email">Email Address</Label>
           <Input
             id="email"
@@ -100,15 +100,15 @@ export function BookingForm({ onSubmit, initialData }: BookingFormProps) {
             placeholder="your.email@example.com"
             value={formData.email}
             onChange={(e) => updateField('email', e.target.value)}
-            className={errors.email ? 'border-red-500' : ''}
+            className={`transition-fast ${errors.email ? 'border-red-500' : ''}`}
           />
           {errors.email && (
-            <p className="text-sm text-red-600">{errors.email}</p>
+            <p className="text-sm text-red-600 animate-slide-up">{errors.email}</p>
           )}
         </div>
 
         {/* Phone */}
-        <div className="space-y-2 mb-4">
+        <div className="space-y-2 mb-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
           <Label htmlFor="phone">Phone Number</Label>
           <Input
             id="phone"
@@ -116,21 +116,21 @@ export function BookingForm({ onSubmit, initialData }: BookingFormProps) {
             placeholder="(555) 123-4567"
             value={formData.phone}
             onChange={(e) => updateField('phone', e.target.value)}
-            className={errors.phone ? 'border-red-500' : ''}
+            className={`transition-fast ${errors.phone ? 'border-red-500' : ''}`}
           />
           {errors.phone && (
-            <p className="text-sm text-red-600">{errors.phone}</p>
+            <p className="text-sm text-red-600 animate-slide-up">{errors.phone}</p>
           )}
         </div>
 
         {/* Group Size */}
-        <div className="space-y-2">
+        <div className="space-y-2 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Label htmlFor="groupSize">Group Size</Label>
           <Select 
             value={formData.groupSize.toString()} 
             onValueChange={(value) => updateField('groupSize', parseInt(value))}
           >
-            <SelectTrigger className={errors.groupSize ? 'border-red-500' : ''}>
+            <SelectTrigger className={`transition-fast ${errors.groupSize ? 'border-red-500' : ''}`}>
               <SelectValue placeholder="Select group size" />
             </SelectTrigger>
             <SelectContent>
@@ -142,13 +142,13 @@ export function BookingForm({ onSubmit, initialData }: BookingFormProps) {
             </SelectContent>
           </Select>
           {errors.groupSize && (
-            <p className="text-sm text-red-600">{errors.groupSize}</p>
+            <p className="text-sm text-red-600 animate-slide-up">{errors.groupSize}</p>
           )}
         </div>
       </div>
 
       {/* Additional Info */}
-      <div className="bg-blue-50 rounded-lg p-4">
+      <div className="bg-blue-50 rounded-lg p-4 animate-slide-up hover-lift transition-smooth" style={{ animationDelay: '0.5s' }}>
         <h4 className="font-medium text-blue-900 mb-2">Important Information</h4>
         <ul className="text-sm text-blue-800 space-y-1">
           <li>• Minimum age: 10 years old</li>
@@ -161,10 +161,11 @@ export function BookingForm({ onSubmit, initialData }: BookingFormProps) {
       {/* Submit Button */}
       <Button
         type="submit"
-        className="w-full py-3 font-semibold rounded-lg"
+        className="w-full py-3 font-semibold rounded-lg hover-scale transition-smooth touch-target animate-slide-up"
         style={{
           backgroundColor: 'var(--adventure-green)',
           color: 'white',
+          animationDelay: '0.6s'
         }}
       >
         REVIEW BOOKING

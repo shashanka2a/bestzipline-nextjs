@@ -5,6 +5,7 @@ import { HeroSection } from "./components/HeroSection";
 import { BookingFlow } from "./components/BookingFlow";
 import { ProfilePage } from "./components/ProfilePage";
 import { BottomNavigation } from "./components/BottomNavigation";
+import { DesktopNavigation } from "./components/DesktopNavigation";
 
 export default function App() {
   const [currentView, setCurrentView] = useState<'hero' | 'booking' | 'profile'>('hero');
@@ -27,24 +28,31 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen pb-16">
-      {currentView === 'hero' && (
-        <HeroSection 
-          heroImage={heroImageUrl} 
-          onBookingClick={handleBookingClick}
-        />
-      )}
+    <div className="min-h-screen pb-16 md:pb-0 md:pt-20">
+      <DesktopNavigation 
+        currentView={currentView}
+        onNavigate={handleNavigation}
+      />
       
-      {currentView === 'booking' && (
-        <BookingFlow 
-          onBack={handleBackToHero}
-          onBookingComplete={handleBookingComplete}
-        />
-      )}
+      <div className="animate-fade-in">
+        {currentView === 'hero' && (
+          <HeroSection 
+            heroImage={heroImageUrl} 
+            onBookingClick={handleBookingClick}
+          />
+        )}
+        
+        {currentView === 'booking' && (
+          <BookingFlow 
+            onBack={handleBackToHero}
+            onBookingComplete={handleBookingComplete}
+          />
+        )}
 
-      {currentView === 'profile' && (
-        <ProfilePage onBack={handleBackToHero} />
-      )}
+        {currentView === 'profile' && (
+          <ProfilePage onBack={handleBackToHero} />
+        )}
+      </div>
 
       <BottomNavigation 
         currentView={currentView}

@@ -22,7 +22,7 @@ export function PerformanceOptimizer() {
     }
 
     // Handle connection quality
-    const connection = (navigator as any).connection;
+    const connection = (navigator as Navigator & { connection?: { effectiveType?: string } }).connection;
     if (connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
       // Disable heavy animations on slow connections
       document.documentElement.classList.add('slow-connection');
